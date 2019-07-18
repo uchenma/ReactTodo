@@ -1,0 +1,20 @@
+#root{
+    background-color: aliceblue
+
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2em 2em
+}
+
+li {
+    list-style: none;
+    padding: 0.5em 0.5em;
+}
+
+.input{
+    padding: 0.8em 0.8em;
+}
