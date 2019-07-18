@@ -7,7 +7,6 @@ class TodoList extends React.Component{
         super(props)
     }
     render(){
-        console.log("this is the lsit",this.props.todos)
         return(
             <ul>
                 {this.props.todos.map((todo)=> <Todo task={todo}/>)}

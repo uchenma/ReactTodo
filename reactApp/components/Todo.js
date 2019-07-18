@@ -8,8 +8,10 @@ class Todo extends React.Component{
     render(){
         return(
             <li>
-                <button type="button" class="btn btn-info" value="">X</button>
-                {this.props.task.completed? <strike>{this.props.task.taskText}</strike>: this.props.task.taskText}
+                <div className="input form-inline">
+                    <button type="button" className="btn btn-info" value="">X</button>
+                    {this.props.task.completed? <strike>{this.props.task.taskText}</strike>: this.props.task.taskText}
+                </div>
             </li>
         )
     }
