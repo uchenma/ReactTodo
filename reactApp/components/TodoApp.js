@@ -16,14 +16,18 @@ class TodoApp extends React.Component{
         }
     }
     addTodo(stringTask){
-        let newEntry = {
-            taskText: stringTask,
-            completed: false,
+        if (!stringTask){
+            alert("Can't add an empty task!")
+        } else{
+            let newEntry = {
+                taskText: stringTask,
+                completed: false,
+            }
+            let connected = this.state.todos.concat(newEntry)
+            this.setState({
+                todos: connected
+            })
         }
-        let connected = this.state.todos.concat(newEntry)
-        this.setState({
-            todos: connected
-        })
     }
     removeTodo(index){
         const copyTodo = [...this.state.todos]
