@@ -23,7 +23,7 @@ class TodoApp extends React.Component{
                 completed: false,
             })
             .then( (response)=> {
-                console.log(response, response.data)
+                console.log(response.data)
                 this.setState({ 
                     todos: this.state.todos.concat(response.data)
                 });

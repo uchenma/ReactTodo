@@ -26,7 +26,7 @@ class InputLine extends React.Component{
                 <h2>All Tasks: <i>go!</i></h2>
                 <div className="input form-inline">
                     <input className="form-control" type="text" placeholder="Enter a task boi!" onChange={(event)=>this.handleTyping(event)} value={this.state.typedText}/>
-                    <button type="submit" className="btn btn-success form-button" onClick={(event)=>this.handleSubmit(event)}>Submit</button>
+                    <button type="submit" className="btn btn-success form-button" onClick={(event)=>this.handleSubmit(event)}>Add!</button>
                 </div>
             </div>
             

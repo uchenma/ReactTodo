@@ -12,7 +12,7 @@ class Todo extends React.Component{
                     <a href="#" onClick={()=>this.props.toggleClick()}>
                         {this.props.task.completed? <em className="strike">{this.props.task.task}</em>: this.props.task.task}
                     </a>
-                    <button type="button" className="btn btn-outline-warning btn-sm" onClick={()=>this.props.xClick()}>X</button>
+                    <button type="button" className="btn btn-danger btn-sm" onClick={()=>this.props.xClick()}>X</button>
                 </div>
             </div>
         )
