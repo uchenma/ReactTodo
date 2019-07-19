@@ -4,7 +4,7 @@ import TodoList from "./TodoList"
 
 // import ReactDOM from "react-dom"
 
-let dummyData =[{taskText: "Cancel amazon subscription", completed: false},{taskText: "Buy new headphones", completed: false},{taskText: "Meal prep for next week", completed: true},{taskText:"Renew gym membership", completed: false}]
+let dummyData =[{task: "Cancel amazon subscription", completed: false},{task: "Buy new headphones", completed: false},{task: "Meal prep for next week", completed: true},{task:"Renew gym membership", completed: false}]
 
 
 
@@ -20,7 +20,7 @@ class TodoApp extends React.Component{
             alert("Can't add an empty task!")
         } else{
             let newEntry = {
-                taskText: stringTask,
+                task: stringTask,
                 completed: false,
             }
             let connected = this.state.todos.concat(newEntry)
