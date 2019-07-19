@@ -1,6 +1,7 @@
 #root{
-    background-color: aliceblue
-
+    background-color: aliceblue;
+    border: 0.3rem solid lightsteelblue;
+    border-radius: 14px;
 }
 
 .container{
@@ -12,7 +13,7 @@
 
 li {
     list-style: none;
-    padding: 0.4em 0.4em;
+    padding: 0.2em 0.2em;
 }
 
 .input{
@@ -21,7 +22,9 @@ li {
 
 h2{
     text-align: center;
-    padding: 0.4em 0.4em
+    padding: 0.4em 0.4em;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
 }
 
 .form-inline {
@@ -31,4 +34,11 @@ h2{
 
 a {
     text-decoration: none !important;
+    font-size: 18px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.strike{
+    text-decoration:line-through;
+    color: slategray
 }

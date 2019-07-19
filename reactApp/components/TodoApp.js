@@ -1,8 +1,9 @@
 import React from "react"
 import InputLine from "./InputLine"
 import TodoList from "./TodoList"
+import axios from "axios"
 
-// import ReactDOM from "react-dom"
+const dbUrl = "http://localhost:3000/db";
 
 let dummyData =[{task: "Cancel amazon subscription", completed: false},{task: "Buy new headphones", completed: false},{task: "Meal prep for next week", completed: true},{task:"Renew gym membership", completed: false}]
 
@@ -19,15 +20,21 @@ class TodoApp extends React.Component{
         if (!stringTask){
             alert("Can't add an empty task!")
         } else{
-            let newEntry = {
+            // post request to save to database
+            axios.post(dbUrl +"/add",{
                 task: stringTask,
                 completed: false,
-            }
-            let connected = this.state.todos.concat(newEntry)
-            this.setState({
-                todos: connected
             })
+            .then( (response)=> {
+                this.setState({ 
+                    todos: this.state.todos.concat(response.data)
+                });
+            })
+            .catch((error)=> {
+                console.log(error)
+            });
         }
+        
     }
     removeTodo(index){
         const copyTodo = [...this.state.todos]
