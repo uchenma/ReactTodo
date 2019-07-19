@@ -36,6 +36,14 @@ class TodoApp extends React.Component{
             todos: copyTodo
         })
     }
+    toggleTodo(index){
+        const toggle = !(this.state.todos[index].completed)
+        const copyTodo = [...this.state.todos]
+        copyTodo[index].completed = toggle
+        this.setState({
+            todos: copyTodo
+        })
+    }
     componentDidMount(){
         this.setState({
             todos: dummyData
@@ -45,7 +53,7 @@ class TodoApp extends React.Component{
         return(
             <div>
                 <InputLine submit={(task)=>this.addTodo(task)}/>
-                <TodoList todos={this.state.todos} todoXClick={(index)=>this.removeTodo(index)}/>
+                <TodoList todos={this.state.todos} todoXClick={(index)=>this.removeTodo(index)} todoToggleClick={(index)=>this.toggleTodo(index)}/>
             </div>
         )
     }

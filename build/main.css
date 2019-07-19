@@ -23,3 +23,12 @@ h2{
     text-align: center;
     padding: 0.4em 0.4em
 }
+
+.form-inline {
+    display: flex;
+    justify-content: space-between
+}
+
+a {
+    text-decoration: none !important;
+}
