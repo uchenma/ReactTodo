@@ -8,9 +8,9 @@ class TodoList extends React.Component{
     }
     render(){
         return(
-            <ul>
-                {this.props.todos.map((todo,i)=> <Todo task={todo} xClick={()=>this.props.todoXClick(i)} toggleClick={()=>this.props.todoToggleClick(i)}/>)}
-            </ul>
+            <div>
+                {this.props.todos.map((todo,i)=> <Todo key={todo._id} task={todo} xClick={()=>this.props.todoXClick(i, todo._id)} toggleClick={()=>this.props.todoToggleClick(i, todo._id)}/>)}
+            </div>
         )
     }  
 }

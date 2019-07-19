@@ -2,18 +2,20 @@
     background-color: aliceblue;
     border: 0.3rem solid lightsteelblue;
     border-radius: 14px;
+    width: 65%;
 }
 
 .container{
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 2em 2em
+    padding: 2em 2em;
+    width: 100%
 }
 
-li {
+.listTodo {
     list-style: none;
-    padding: 0.2em 0.2em;
+    padding: 0.1em 0.2em;
 }
 
 .input{
@@ -29,7 +31,7 @@ h2{
 
 .form-inline {
     display: flex;
-    justify-content: space-between
+    justify-content: space-between;
 }
 
 a {

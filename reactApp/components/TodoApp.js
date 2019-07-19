@@ -5,15 +5,12 @@ import axios from "axios"
 
 const dbUrl = "http://localhost:3000/db";
 
-let dummyData =[{task: "Cancel amazon subscription", completed: false},{task: "Buy new headphones", completed: false},{task: "Meal prep for next week", completed: true},{task:"Renew gym membership", completed: false}]
-
-
 
 class TodoApp extends React.Component{
     constructor(props){
         super(props)
         this.state ={
-            todos: dummyData
+            todos: []
         }
     }
     addTodo(stringTask){
@@ -26,6 +23,7 @@ class TodoApp extends React.Component{
                 completed: false,
             })
             .then( (response)=> {
+                console.log(response, response.data)
                 this.setState({ 
                     todos: this.state.todos.concat(response.data)
                 });
@@ -36,31 +34,55 @@ class TodoApp extends React.Component{
         }
         
     }
-    removeTodo(index){
-        const copyTodo = [...this.state.todos]
-        copyTodo.splice(index,1)
-        this.setState({
-            todos: copyTodo
+    removeTodo(index, id){
+        axios.post(dbUrl +"/remove",{
+            id: id
         })
+        .then( (response)=> {
+            console.log(response.data)
+            const copyTodo = [...this.state.todos]
+            copyTodo.splice(index,1)
+            this.setState({
+                todos: copyTodo
+            })
+        })
+        .catch((error)=> {
+            console.log(error)
+        });
     }
-    toggleTodo(index){
-        const toggle = !(this.state.todos[index].completed)
-        const copyTodo = [...this.state.todos]
-        copyTodo[index].completed = toggle
-        this.setState({
-            todos: copyTodo
+    toggleTodo(index, id){
+        axios.post(dbUrl +"/toggle",{
+            id: id
         })
+        .then( (response)=> {
+            console.log(response.data)
+            let copyTodo = [...this.state.todos]
+            copyTodo[index] = response.data
+            this.setState({ 
+                todos: copyTodo
+            });
+        })
+        .catch((error)=> {
+            console.log(error)
+        });
+
     }
     componentDidMount(){
-        this.setState({
-            todos: dummyData
-        })
+        axios.get(dbUrl + "/all")
+            .then((response)=>{
+                this.setState({ 
+                    todos: this.state.todos.concat(response.data)
+                });
+            })
+            .catch((error)=> {
+                console.log(error)
+            });
     }
     render(){
         return(
             <div>
                 <InputLine submit={(task)=>this.addTodo(task)}/>
-                <TodoList todos={this.state.todos} todoXClick={(index)=>this.removeTodo(index)} todoToggleClick={(index)=>this.toggleTodo(index)}/>
+                <TodoList todos={this.state.todos} todoXClick={(index, id)=>this.removeTodo(index, id)} todoToggleClick={(index, id)=>this.toggleTodo(index, id)}/>
             </div>
         )
     }
